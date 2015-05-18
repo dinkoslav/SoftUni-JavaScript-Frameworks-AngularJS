@@ -1,0 +1,19 @@
+.pesho {
+	color:red;
+}
+
+.pesho:hover {
+	color:blue 
+}
+.even_row {
+	background: red;
+}
+
+img {
+	float: right;
+}
+
+.video {
+	width:550px;
+	border: 1px solid purple;
+}
