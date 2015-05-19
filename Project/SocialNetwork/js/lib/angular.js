@@ -2367,12 +2367,12 @@ function publishExternalAPI(angular) {
  *   `'ngModel'`).
  * - `injector()` - retrieves the injector of the current element or its parent.
  * - `scope()` - retrieves the {@link ng.$rootScope.Scope scope} of the current
- *   element or its parent. Requires {@link guide/production#disabling-debug-data Debug Data} to
+ *   element or its parent. Requires {@link guide/production#disabling-debug-data Debug data} to
  *   be enabled.
  * - `isolateScope()` - retrieves an isolate {@link ng.$rootScope.Scope scope} if one is attached directly to the
  *   current element. This getter should be used only on elements that contain a directive which starts a new isolate
  *   scope. Calling `scope()` on this element always returns the original non-isolate scope.
- *   Requires {@link guide/production#disabling-debug-data Debug Data} to be enabled.
+ *   Requires {@link guide/production#disabling-debug-data Debug data} to be enabled.
  * - `inheritedData()` - same as `data()`, but walks up the DOM until a value is found or the top
  *   parent element is reached.
  *
@@ -6628,7 +6628,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
    * * `$binding` data property containing an array of the binding expressions
    *
    * You may want to disable this in production for a significant performance boost. See
-   * {@link guide/production#disabling-debug-data Disabling Debug Data} for more.
+   * {@link guide/production#disabling-debug-data Disabling Debug data} for more.
    *
    * The default value is true.
    */
@@ -8689,7 +8689,7 @@ function headersGetter(headers) {
  *
  * This function is used for both request and response transforming
  *
- * @param {*} data Data to transform.
+ * @param {*} data data to transform.
  * @param {function(string=)} headers HTTP headers getter fn.
  * @param {number} status HTTP status code of the response.
  * @param {(Function|Array.<Function>)} fns Function or an array of functions.
@@ -9210,7 +9210,7 @@ function $HttpProvider() {
      *    - **params** – `{Object.<string|Object>}` – Map of strings or objects which will be turned
      *      to `?key1=value1&key2=value2` after the url. If the value is not a string, it will be
      *      JSONified.
-     *    - **data** – `{string|Object}` – Data to be sent as the request message data.
+     *    - **data** – `{string|Object}` – data to be sent as the request message data.
      *    - **headers** – `{Object}` – Map of strings or functions which return strings representing
      *      HTTP headers to send to the server. If the return value of a function is null, the
      *      header will not be sent.

@@ -1,6 +1,6 @@
 app.directive('login', function(){
     return{
-        controller: 'WelcomeController',
+        controller: 'LoginController',
         restrict: 'E',
         templateUrl: 'templates/public/login.html',
         replace: true

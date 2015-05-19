@@ -1,6 +1,6 @@
 app.directive('register', function(){
     return{
-        controller: 'WelcomeController',
+        controller: 'RegisterController',
         restrict: 'E',
         templateUrl: 'templates/public/register.html',
         replace: true
