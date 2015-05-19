@@ -1,10 +1,10 @@
 'use strict';
 
-var app = angular.module('socialApp', ['ngRoute', 'ngResource']);
+var app = angular.module('socialApp', ['ngRoute', 'ngResource', 'ngStorage']);
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net/api/');
 
-if(!localStorage.sessionToken){
+if(!localStorage['ngStorage-access_token']){
     app.config(['$routeProvider', function($routeProvider){
         $routeProvider.when('/', {
             templateUrl: 'templates/public/welcome.html',
