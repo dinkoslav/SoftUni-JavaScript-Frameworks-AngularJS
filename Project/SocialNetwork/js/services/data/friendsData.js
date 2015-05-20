@@ -72,12 +72,28 @@ app.factory('friendsData', ['$resource', 'baseServiceUrl', 'authentication', fun
             .get();
     }
 
+    function searchUsersByName(username) {
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'users/search?searchTerm=' + username,
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    headers: headers
+                }
+            })
+            .get();
+    }
+
     return{
         getUserFriendRequests: getUserFriendRequests,
         approveFriendRequest: approveFriendRequest,
         rejectFriendRequest: rejectFriendRequest,
         getUserOwnFriends: getUserOwnFriends,
-        getOtherUserFriends: getOtherUserFriends
+        getOtherUserFriends: getOtherUserFriends,
+        searchUsersByName: searchUsersByName
     }
 }]);
 

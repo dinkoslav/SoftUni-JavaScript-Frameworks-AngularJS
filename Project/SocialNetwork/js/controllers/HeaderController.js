@@ -7,6 +7,9 @@ app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$local
     $scope.showRequestsDetail = showRequestsDetail;
     $scope.requestDetailsShown = false;
     $scope.requestsCount = 0;
+    $scope.searchResultsCount = 0;
+    $scope.searchResults = [];
+    $scope.searchShown = false;
 
     if($localStorage['access_token']) {
         if(!$localStorage['username']) {
@@ -77,6 +80,35 @@ app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$local
         function showRequestsDetail() {
             if($scope.requestsCount) {
                 $scope.requestDetailsShown = true;
+            }
+        }
+
+        $scope.searchUsers = function(searchUser){
+            if(searchUser == ''){
+                $scope.searchShown = false;
+            }
+            else{
+                friendsData.searchUsersByName(searchUser)
+                    .$promise
+                    .then(function (data) {
+                        if(data.length){
+                            data.forEach(function(result){
+                                if(result.profileImageData == null){
+                                    result.profileImageData = "data:image/jpg;base64," + profileImage;
+                                }
+                            });
+                            $scope.searchResultsCount = data.length;
+                            $scope.searchResults = data;
+                            $scope.searchShown = true;
+                        }
+                        else{
+                            $scope.searchResultsCount = 0;
+                            $scope.searchResults = [];
+                            $scope.searchShown = false;
+                        }
+                    }, function(){
+                        $scope.searchShown = false;
+                    });
             }
         }
     }

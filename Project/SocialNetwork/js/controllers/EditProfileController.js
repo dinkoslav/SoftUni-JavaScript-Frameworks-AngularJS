@@ -8,7 +8,6 @@ app.controller('EditProfileController', ['$scope', '$localStorage', 'userData', 
     };
 
     $scope.changeCoverImageData = function(){
-        console.log($scope.editUser.coverImageData);
         $scope.editUser.coverImageData = "data:image/jpg;base64," + $scope.editUser.coverImageData.base64;
     };
 

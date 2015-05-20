@@ -108,3 +108,34 @@ ul.navbar-nav>li>a>span{
     line-height: 34px;
     padding-right:0;
 }
+
+.dropdown-menu{
+    display: inline-block;
+    padding-bottom: 0;
+}
+
+.dropdown-menu li{
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 0px;
+}
+
+.dropdown-menu img{
+    width: 35%;
+    max-height: 58px;
+    padding-left: 0;
+}
+
+.dropdown > .dropdown-menu > li > a {
+    padding-left: 10px;
+}
+
+.dropdown > .dropdown-menu > li > a > p {
+    font-size: 14px;
+    line-height: 58px;
+}
+
+.dropdown-menu > li > p {
+    line-height: 35px;
+    text-align: center;
+    margin: 0;
+}
