@@ -6,6 +6,7 @@
 .navbar-header img{
     margin:5px 10px 5px 0;
     max-width: 40px;
+    max-height:40px;
     float: left;
 }
 
@@ -27,6 +28,15 @@ ul.navbar-nav>li>a>span{
 
 .upload-picture p{
     text-align: center;
+}
+
+.upload-picture img{
+    margin: 0 auto;
+    display: inherit;
+}
+
+.upload-picture input{
+    margin: 0 auto;
 }
 
 .upload-cover p{
@@ -58,4 +68,43 @@ ul.navbar-nav>li>a>span{
 .modal-content>.modal-footer{
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+.friends-sidebar{
+    padding: 10px 25px;
+}
+
+.friends-sidebar>p{
+    margin-bottom: 20px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.friends-sidebar img{
+    width: 100%;
+    max-height: 90px;
+}
+
+.friends-sidebar>div>div>a>p{
+    font-size: 18px;
+    text-align: center;
+    color: black;
+}
+
+.friends img{
+    width: 100px;
+    max-height: 100px;
+}
+
+.friends p{
+    line-height: 70px;
+    color: black;
+    font-size: 20px;
+    text-align: right;
+    padding-right: 30px;
+}
+
+.friend-filter p{
+    height: 34px;
+    line-height: 34px;
+    padding-right:0;
 }

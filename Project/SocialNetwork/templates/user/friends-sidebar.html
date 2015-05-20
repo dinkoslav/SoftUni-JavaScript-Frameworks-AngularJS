@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="well well-lg friends-sidebar">
+        <p>Friends - <a href="#/users/{{user.username}}/friends">{{friendsCount}}</a> Total</p>
+        <div class="row">
+            <div class="col-md-4" ng-repeat="friend in friends">
+                <a href="#/users/{{friend.username}}">
+                    <img src="" ng-src="{{friend.profileImageData}}" alt="{{friend.name}}">
+                    <p>{{friend.name}}</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

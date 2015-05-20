@@ -20,13 +20,13 @@ if(!localStorage['ngStorage-access_token']){
         $routeProvider.when('/', {
             templateUrl: 'templates/user/home.html'
         });
-        $routeProvider.when('#/users/:username', {
-            templateUrl: 'templates/public/home.html',
-            controller: 'HomeController'
+        $routeProvider.when('/users/:username', {
+            templateUrl: 'templates/user/home.html',
+            controller: 'WallController'
         });
-        $routeProvider.when('#/users/:username/friends', {
-            templateUrl: 'templates/public/home.html',
-            controller: 'HomeController'
+        $routeProvider.when('/users/:username/friends', {
+            templateUrl: 'templates/user/friends.html',
+            controller: 'FriendsController'
         });
         $routeProvider.when('/profile', {
             templateUrl: 'templates/user/edit-profile.html',

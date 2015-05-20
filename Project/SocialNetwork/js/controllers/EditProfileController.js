@@ -7,6 +7,15 @@ app.controller('EditProfileController', ['$scope', '$localStorage', 'userData', 
         'gender': $localStorage['gender']
     };
 
+    $scope.changeCoverImageData = function(){
+        console.log($scope.editUser.coverImageData);
+        $scope.editUser.coverImageData = "data:image/jpg;base64," + $scope.editUser.coverImageData.base64;
+    };
+
+    $scope.changeProfileImageData = function(){
+        $scope.editUser.profileImageData = "data:image/jpg;base64," + $scope.editUser.profileImageData.base64;
+    };
+
     $scope.editProfile = function(user){
         if(user.profileImageData.filesize > 131072){
             alertify.error('Profile image size is to big!');
@@ -21,12 +30,12 @@ app.controller('EditProfileController', ['$scope', '$localStorage', 'userData', 
             alertify.error('Email can not be empty!');
         }
         else{
-            if(typeof user.profileImageData != 'string'){
-                user.profileImageData = user.profileImageData.base64;
+            if(typeof user.profileImageData == "object"){
+                user.profileImageData = "data:image/jpg;base64," + user.profileImageData.base64;
             }
 
-            if(typeof user.coverImageData != 'string'){
-                user.coverImageData = user.coverImageData.base64;
+            if(typeof user.coverImageData == "object"){
+                user.coverImageData = "data:image/jpg;base64," + user.coverImageData.base64;
             }
 
             $localStorage['profileImageData'] = user.profileImageData;

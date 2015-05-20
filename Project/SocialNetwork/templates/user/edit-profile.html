@@ -8,10 +8,10 @@
             <form class="form-horizontal row">
                 <fieldset class="col-md-6">
                     <div class="col-md-9 upload-picture">
-                        <img class="img-thumbnail img-responsive" ng-src="data:image/jpeg;base64,{{editUser.profileImageData}}" base-sixty-four-image="editUser.profileImageData" alt="{{editUser.name}}"/>
+                        <img class="img-thumbnail img-responsive" ng-src="{{editUser.profileImageData}}" base-sixty-four-image="editUser.profileImageData" alt="{{editUser.name}}"/>
                         <p>Allowed format: .jpg</p>
                         <p>Limit: 128 kb</p>
-                        <input type="file" class="btn btn-primary" ng-model="editUser.profileImageData" base-sixty-four-input id="inputProfileImageData" placeholder="img" value="Upload">
+                        <input type="file" class="btn btn-primary" ng-model="editUser.profileImageData" base-sixty-four-input id="inputProfileImageData" placeholder="img" ng-change="changeProfileImageData()">
                     </div>
                 </fieldset>
                 <fieldset class="col-md-6">
@@ -47,8 +47,8 @@
                         </div>
                     </div>
                     <div class="form-group col-lg-12 upload-cover">
-                        <img class="img-thumbnail img-responsive" ng-src="data:image/jpeg;base64,{{editUser.coverImageData}}" base-sixty-four-image="editUser.coverImageData" alt="{{editUser.name}}"/>
-                        <input type="file" class="btn btn-primary col-lg-8" ng-model="editUser.coverImageData" base-sixty-four-input id="inputCoverImageData" placeholder="img" value="Upload">
+                        <img class="img-thumbnail img-responsive" ng-src="{{editUser.coverImageData}}" base-sixty-four-image="editUser.coverImageData" alt="{{editUser.name}}"/>
+                        <input type="file" class="btn btn-primary col-lg-8" ng-model="editUser.coverImageData" base-sixty-four-input id="inputCoverImageData" placeholder="img" ng-change="changeCoverImageData()">
                         <p class=" col-lg-4">Limit: 1024 kb</p>
                     </div>
                 </fieldset>

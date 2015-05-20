@@ -67,6 +67,11 @@ app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$local
                 });
 
                 $scope.friendRequests = data;
+            }, function(){
+                authentication.removeUser();
+                $timeout(function () {
+                    $window.location.reload();
+                }, 1000);
             });
 
         function showRequestsDetail() {
