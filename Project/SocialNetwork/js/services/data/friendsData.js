@@ -14,8 +14,38 @@ app.factory('friendsData', ['$resource', 'baseServiceUrl', 'authentication', fun
             .get();
     }
 
+    function approveFriendRequest(requestId) {
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'me/requests/' + requestId + '?status=approved',
+            null,
+            {
+                'update': {
+                    method: 'PUT',
+                    headers: headers
+                }
+            })
+            .update();
+    }
+
+    function rejectFriendRequest(requestId) {
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'me/requests/' + requestId + '?status=rejected',
+            null,
+            {
+                'update': {
+                    method: 'PUT',
+                    headers: headers
+                }
+            })
+            .update();
+    }
+
     return{
-        getUserFriendRequests: getUserFriendRequests
+        getUserFriendRequests: getUserFriendRequests,
+        approveFriendRequest: approveFriendRequest,
+        rejectFriendRequest: rejectFriendRequest
     }
 }]);
 

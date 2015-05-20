@@ -10,11 +10,10 @@
             <img src="" ng-src="data:image/jpeg;base64,{{user.profileImageData}}" alt="{{user.name}}">
             <a class="navbar-brand" href="#/">{{user.username}}</a>
         </div>
-
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
                 <li ng-class="{ active: isActive('/')}"><a href="#/"><span class="glyphicon glyphicon-comment"></span>News Feed <span class="sr-only">(current)</span></a></li>
-                <li><a href="#/"><span class="glyphicon glyphicon-user"></span>Requests: {{requestsCount}}</a></li>
+                <li data-toggle="modal" data-target="#requests"><a href="" ng-click="showRequestsDetail()"><span class="glyphicon glyphicon-user"></span>Requests: {{requestsCount}}</a></li>
                 <li ng-class="{ active: isActive('/profile')}"><a href="#/profile"><span class="glyphicon glyphicon-cog"></span>Edit Profile</a></li>
                 <li ng-class="{ active: isActive('/profile/password')}"><a href="#/profile/password"><span class="glyphicon glyphicon-edit"></span>Change Password</a></li>
                 <li><a href="#/logout"><span class="glyphicon glyphicon-off"></span>Logout</a></li>
@@ -25,6 +24,7 @@
                 </div>
                 <button type="submit" class="btn btn-default"><span class=" glyphicon glyphicon-search"></span></button>
             </form>
+            <div friendrequest></div>
         </div>
     </div>
 </nav>

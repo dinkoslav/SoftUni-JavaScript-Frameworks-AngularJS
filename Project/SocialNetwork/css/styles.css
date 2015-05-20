@@ -32,3 +32,30 @@ ul.navbar-nav>li>a>span{
 .upload-cover p{
     line-height: 36px;
 }
+
+.modal {
+    display: block;
+}
+
+.modal img {
+    width: 75px;
+}
+
+.modal-dialog{
+    width:300px;
+    margin-left: 25%;
+}
+
+.modal-body span{
+    font-size: 18px;
+}
+
+.modal-footer p{
+    text-align: center;
+    margin:0;
+}
+
+.modal-content>.modal-footer{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

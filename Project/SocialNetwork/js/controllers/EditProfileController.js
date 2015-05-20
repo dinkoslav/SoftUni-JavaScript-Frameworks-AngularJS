@@ -21,6 +21,14 @@ app.controller('EditProfileController', ['$scope', '$localStorage', 'userData', 
             alertify.error('Email can not be empty!');
         }
         else{
+            if(typeof user.profileImageData != 'string'){
+                user.profileImageData = user.profileImageData.base64;
+            }
+
+            if(typeof user.coverImageData != 'string'){
+                user.coverImageData = user.coverImageData.base64;
+            }
+
             $localStorage['profileImageData'] = user.profileImageData;
             $localStorage['coverImageData'] = user.coverImageData;
             $localStorage['name'] = user.name;

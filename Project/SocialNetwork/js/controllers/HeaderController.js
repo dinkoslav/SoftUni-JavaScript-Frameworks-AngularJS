@@ -3,6 +3,10 @@ app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$local
     $scope.isActive = function (viewLocation) {
         return viewLocation === $location.path();
     };
+    $scope.friendRequests = [];
+    $scope.showRequestsDetail = showRequestsDetail;
+    $scope.requestDetailsShown = false;
+    $scope.requestsCount = 0;
 
     if($localStorage['access_token']) {
         if(!$localStorage['username']) {
@@ -56,6 +60,19 @@ app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$local
             .$promise
             .then(function (data) {
                 $scope.requestsCount = data.length;
+                data.forEach(function(userData){
+                    if(userData.user.profileImageData == null){
+                        userData.user.profileImageData = profileImage;
+                    }
+                });
+
+                $scope.friendRequests = data;
             });
+
+        function showRequestsDetail() {
+            if($scope.requestsCount) {
+                $scope.requestDetailsShown = true;
+            }
+        }
     }
 }]);

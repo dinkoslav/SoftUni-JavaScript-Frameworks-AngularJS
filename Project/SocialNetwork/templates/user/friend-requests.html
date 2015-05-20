@@ -1,0 +1,27 @@
+<div class="modal" id="#requests" ng-if="requestDetailsShown">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">x</button>
+                <h4 class="modal-title">Friend requests</h4>
+            </div>
+            <div class="request" ng-repeat="request in friendRequests">
+                <div class="modal-body row">
+                    <div class="col-md-4">
+                        <img src="" ng-src="data:image/jpeg;base64,{{request.user.profileImageData}}" alt="{{request.user.name}}">
+                    </div>
+                    <div class="col-md-8">
+                        <span><strong>{{request.user.name}}</strong></span>
+                        <div class="modal-footer row">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="acceptRequest(request.id)">Accept</button>
+                            <button type="button" class="btn btn-primary" ng-click="rejectRequest(request.id)">Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p>{{requestsCount}} result total</p>
+            </div>
+        </div>
+    </div>
+</div>
