@@ -9,14 +9,53 @@ app.factory('userData', ['$resource', 'baseServiceUrl', 'authentication', functi
             .save(user);
     }
 
-    function logoutUser(user){
-        return $resource(baseServiceUrl + 'users/logout')
-            .save(user);
+    function logoutUser(){
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'users/logout',
+            null,
+            {
+                'save': {
+                    method: 'POST',
+                    headers: headers
+                }
+            })
+            .save();
+    }
+
+    function getLoggedUserData(){
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'me',
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    headers: headers
+                }
+            })
+            .get();
+    }
+
+    function changeUserPassword(password){
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'me/changepassword',
+            null,
+            {
+                'put': {
+                    method: 'PUT',
+                    headers: headers
+                }
+            })
+            .put(password);
     }
 
     return{
         register: registerUser,
         login: loginUser,
-        logout: logoutUser
+        logout: logoutUser,
+        getLoggedUserData: getLoggedUserData,
+        changePassword: changeUserPassword
     }
 }]);

@@ -10,3 +10,11 @@
 .form-horizontal .form-group label{
     text-align: left;
 }
+
+ul.navbar-nav>li>a>span{
+    margin-right: 3px;
+}
+
+.section-header{
+    padding-left: 50px;
+}

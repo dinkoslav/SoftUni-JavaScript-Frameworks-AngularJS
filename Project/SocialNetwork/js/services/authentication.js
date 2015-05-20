@@ -5,10 +5,6 @@ app.factory('authentication', ['$localStorage', '$sessionStorage', function($loc
         });
     }
 
-    function getUserData(){
-        return $localStorage['ngStorage-access_token'];
-    }
-
     function getHeaders(){
         var headers = {};
         var userToken = $localStorage['access_token'];
@@ -25,7 +21,6 @@ app.factory('authentication', ['$localStorage', '$sessionStorage', function($loc
 
     return{
         saveUser: saveUserData,
-        getUser: getUserData,
         getHeaders: getHeaders,
         removeUser: removeUser
     }
