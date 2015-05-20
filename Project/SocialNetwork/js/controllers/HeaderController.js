@@ -1,16 +1,57 @@
-app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$localStorage', 'authentication', '$timeout', '$window', function($scope, userData, friendsData, $localStorage, authentication, $timeout, $window){
+app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$localStorage', 'authentication', '$timeout', '$window', '$location', 'profileImage', 'coverImage', function($scope, userData, friendsData, $localStorage, authentication, $timeout, $window, $location, profileImage, coverImage){
     $scope.user = {};
-    if(localStorage['ngStorage-access_token']) {
-        userData.getLoggedUserData()
-            .$promise
-            .then(function (data) {
-                $scope.user = data;
-            }, function(){
-                authentication.removeUser();
-                $timeout(function () {
-                    $window.location.reload();
-                }, 1000);
-            });
+    $scope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
+
+    if($localStorage['access_token']) {
+        if(!$localStorage['username']) {
+            userData.getLoggedUserData()
+                .$promise
+                .then(function (data) {
+                    if(data.profileImageData == null) {
+                        data.profileImageData = profileImage;
+                    }
+
+                    if(data.coverImageData == null) {
+                        data.coverImageData = coverImage;
+                    }
+
+                    var gender = 'Other';
+                    if(data.gender == 1){
+                        gender = 'Male';
+                    }
+                    else if(data.gender == 2){
+                        gender = 'Female';
+                    }
+
+                    $localStorage.$default({
+                        'username': data.username,
+                        'profileImageData': data.profileImageData,
+                        'coverImageData': data.coverImageData,
+                        'name': data.name,
+                        'id': data.id,
+                        'email': data.email,
+                        'gender': gender
+                    });
+                }, function(){
+                    authentication.removeUser();
+                    $timeout(function () {
+                        $window.location.reload();
+                    }, 1000);
+                });
+        }
+
+        $scope.user = {
+            'username': $localStorage['username'],
+            'profileImageData': $localStorage['profileImageData'],
+            'coverImageData': $localStorage['coverImageData'],
+            'name': $localStorage['name'],
+            'id': $localStorage['id'],
+            'email': $localStorage['email'],
+            'gender': $localStorage['gender']
+        };
+
         friendsData.getUserFriendRequests()
             .$promise
             .then(function (data) {

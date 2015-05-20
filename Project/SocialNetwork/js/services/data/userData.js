@@ -51,11 +51,26 @@ app.factory('userData', ['$resource', 'baseServiceUrl', 'authentication', functi
             .put(password);
     }
 
+    function editProfile(user){
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'me',
+            null,
+            {
+                'put': {
+                    method: 'PUT',
+                    headers: headers
+                }
+            })
+            .put(user);
+    }
+
     return{
         register: registerUser,
         login: loginUser,
         logout: logoutUser,
         getLoggedUserData: getLoggedUserData,
-        changePassword: changeUserPassword
+        changePassword: changeUserPassword,
+        editProfile: editProfile
     }
 }]);

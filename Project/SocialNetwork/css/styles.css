@@ -3,6 +3,12 @@
     text-align: center;
 }
 
+.navbar-header img{
+    margin:5px 10px 5px 0;
+    max-width: 40px;
+    float: left;
+}
+
 .radio label{
     margin-right: 10px;
 }
@@ -17,4 +23,12 @@ ul.navbar-nav>li>a>span{
 
 .section-header{
     padding-left: 50px;
+}
+
+.upload-picture p{
+    text-align: center;
+}
+
+.upload-cover p{
+    line-height: 36px;
 }

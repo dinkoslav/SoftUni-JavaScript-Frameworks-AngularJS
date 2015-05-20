@@ -4,8 +4,60 @@
         <h2>Edit Profile</h2>
     </header>
     <div class="container">
-        <div class="col-sm-offset-2 col-md-10">
-            <editprofile>Edit</editprofile>
+        <div class="col-sm-offset-1 col-md-10">
+            <form class="form-horizontal row">
+                <fieldset class="col-md-6">
+                    <div class="col-md-9 upload-picture">
+                        <img class="img-thumbnail img-responsive" ng-src="data:image/jpeg;base64,{{editUser.profileImageData}}" base-sixty-four-image="editUser.profileImageData" alt="{{editUser.name}}"/>
+                        <p>Allowed format: .jpg</p>
+                        <p>Limit: 128 kb</p>
+                        <input type="file" class="btn btn-primary" ng-model="editUser.profileImageData" base-sixty-four-input id="inputProfileImageData" placeholder="img" value="Upload">
+                    </div>
+                </fieldset>
+                <fieldset class="col-md-6">
+                    <div class="form-group">
+                        <label for="inputName" class="col-lg-2 control-label">Name</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="inputName" placeholder="Name" type="text" ng-model="editUser.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+                        <div class="col-lg-10">
+                            <input class="form-control" id="inputEmail" placeholder="Email" type="text" ng-model="editUser.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Gender</label>
+                        <div class="col-lg-10">
+                            <div class="radio">
+                                <label>
+                                    <input name="gender" id="male" value="male" type="radio" ng-model="editUser.gender">
+                                    Male
+                                </label>
+                                <label>
+                                    <input name="gender" id="female" value="female" type="radio" ng-model="editUser.gender">
+                                    Female
+                                </label>
+                                <label>
+                                    <input name="gender" id="other" value="other" checked="" type="radio" ng-model="editUser.gender">
+                                    Other
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-lg-12 upload-cover">
+                        <img class="img-thumbnail img-responsive" ng-src="data:image/jpeg;base64,{{editUser.coverImageData}}" base-sixty-four-image="editUser.coverImageData" alt="{{editUser.name}}"/>
+                        <input type="file" class="btn btn-primary col-lg-8" ng-model="editUser.coverImageData" base-sixty-four-input id="inputCoverImageData" placeholder="img" value="Upload">
+                        <p class=" col-lg-4">Limit: 1024 kb</p>
+                    </div>
+                </fieldset>
+                <div class="form-group pull-right">
+                    <div class="col-lg-2 col-lg-offset-4">
+                        <button type="submit" class="btn btn-primary" ng-click="editProfile(editUser)">Save Changes</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </section>
