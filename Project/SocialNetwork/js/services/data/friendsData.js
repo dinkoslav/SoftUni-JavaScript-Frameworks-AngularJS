@@ -71,6 +71,21 @@ app.factory('friendsData', ['$resource', 'baseServiceUrl', 'authentication', fun
             .get();
     }
 
+    function getOtherUserAllFriends(username) {
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'users/' + username + '/friends',
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    headers: headers
+                }
+            })
+            .get();
+    }
+
     function searchUsersByName(username) {
         var headers = authentication.getHeaders();
         return $resource(
@@ -122,7 +137,8 @@ app.factory('friendsData', ['$resource', 'baseServiceUrl', 'authentication', fun
         getOtherUserFriends: getOtherUserFriends,
         searchUsersByName: searchUsersByName,
         getUserFullData: getUserFullData,
-        sendFriendRequest: sendFriendRequest
+        sendFriendRequest: sendFriendRequest,
+        getOtherUserAllFriends: getOtherUserAllFriends
     }
 }]);
 

@@ -21,26 +21,31 @@ app.controller('FriendsSidebarController',
             });
     }
     else{
-        if($scope.wallData.isFriend){
-            $scope.sidebarOwner = $routeParams.username;
-            friendsData.getOtherUserFriends($scope.sidebarOwner)
-                .$promise
-                .then(function (data) {
-                    $scope.friendsCount = data.friends.length;
-                    data.friends.forEach(function(friend){
-                        if(friend.profileImageData == null){
-                            friend.profileImageData = "data:image/jpg;base64," + profileImage;
-                        }
-                    });
+        friendsData.getUserFullData($routeParams.username)
+            .$promise
+            .then(function (data) {
+                if(data.isFriend){
+                    $scope.sidebarOwner = $routeParams.username;
+                    friendsData.getOtherUserFriends($scope.sidebarOwner)
+                        .$promise
+                        .then(function (data) {
+                            $scope.friendsCount = data.totalCount;
+                            data.friends.forEach(function(friend){
+                                if(friend.profileImageData == null){
+                                    friend.profileImageData = "data:image/jpg;base64," + profileImage;
+                                }
+                            });
 
-                    $scope.friends = data.friends.slice(0,6);
-                }, function (error) {
-                });
-        }
-        else{
-            $scope.sidebarOwner = $routeParams.username;
-            $scope.friendsSidebarVisible = false;
-        }
+                            $scope.friends = data.friends.slice(0,6);
+                        }, function (error) {
+                            alertify.error('Server Error! Try Again!');
+                            $location.path('/');
+                        });
+                }
+                else{
+                    $scope.sidebarOwner = $routeParams.username;
+                    $scope.friendsSidebarVisible = false;
+                }
+            });
     }
-
 }]);

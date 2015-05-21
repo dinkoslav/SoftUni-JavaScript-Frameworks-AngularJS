@@ -8,7 +8,7 @@
             <div class="request" ng-repeat="request in friendRequests">
                 <div class="modal-body row">
                     <div class="col-md-4">
-                        <img src="" ng-src="data:image/jpeg;base64,{{request.user.profileImageData}}" alt="{{request.user.name}}">
+                        <img src="" ng-src="{{request.user.profileImageData}}" alt="{{request.user.name}}">
                     </div>
                     <div class="col-md-8">
                         <span><strong>{{request.user.name}}</strong></span>

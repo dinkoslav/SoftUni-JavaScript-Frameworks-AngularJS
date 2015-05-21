@@ -1,5 +1,5 @@
 app.controller('FriendRequestsController',
-    ['$scope', '$route', 'friendsData', function ($scope, $route, friendsData) {
+    ['$scope', '$route', 'friendsData', 'profileImage', function ($scope, $route, friendsData, profileImage) {
         $scope.acceptRequest = acceptRequest;
         $scope.rejectRequest = rejectRequest;
         $scope.cancel = cancel;

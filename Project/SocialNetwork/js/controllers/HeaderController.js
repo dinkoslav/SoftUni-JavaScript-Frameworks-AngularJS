@@ -65,7 +65,7 @@ app.controller('HeaderController', ['$scope', 'userData', 'friendsData', '$local
                 $scope.requestsCount = data.length;
                 data.forEach(function(userData){
                     if(userData.user.profileImageData == null){
-                        userData.user.profileImageData = profileImage;
+                        userData.user.profileImageData = "data:image/jpg;base64," + profileImage;
                     }
                 });
 

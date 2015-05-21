@@ -37,7 +37,7 @@ app.controller('WallController',
 
     friendsData.getUserFullData($routeParams.username)
         .$promise
-        .then(function (data) {
+        .then(function(data) {
             if(data.username == $localStorage['username']){
                 $scope.friendsSidebarVisible = true;
                 $scope.userStatus = 'Me';

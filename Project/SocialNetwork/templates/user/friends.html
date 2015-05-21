@@ -1,10 +1,10 @@
 <userheader></userheader>
 <section>
     <header class="section-header">
-        <h2>{{user.name}} - Friends ({{friendsCount}} total)</h2>
+        <h2>{{friendsWallOwner}} - Friends ({{friendsCount}} total)</h2>
     </header>
     <div class="container friends">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="row friend-filter">
                 <p class="col-md-7">Name Filter: </p>
                 <div class="col-md-5 form-group pull-right">
@@ -15,7 +15,7 @@
                 <a href="#/users/{{friend.username}}">
                     <div class="row">
                         <img class="col-md-3" src="" ng-src="{{friend.profileImageData}}" alt="{{friend.name}}">
-                        <p class="col-md-5 pull-right">{{friend.name}}</p>
+                        <p class="col-md-8 pull-right">{{friend.name}}</p>
                     </div>
                 </a>
             </div>
