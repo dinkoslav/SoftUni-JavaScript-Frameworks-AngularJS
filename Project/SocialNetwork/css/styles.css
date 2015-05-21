@@ -186,7 +186,7 @@ ul.navbar-nav>li>a>span{
 }
 
 .wall-header .wall-user-info div{
-    width:150px;
+    width:350px;
     float:left;
     margin-left: 45px;
     padding-top: 20px;
@@ -249,7 +249,15 @@ ul.navbar-nav>li>a>span{
 }
 
 .news-feed  .panel-footer{
-    height: 40px;
+    height: 55px;
+}
+
+.news-feed  .panel-footer>div{
+    line-height: 35px;
+}
+
+.news-feed  .panel-footer button{
+    margin-right:10px;
 }
 
 .news-feed .comments-panel{
@@ -279,4 +287,30 @@ ul.navbar-nav>li>a>span{
 
 .news-feed .more-btn{
     margin-bottom: 10px;
+}
+
+.editPostModal, .addCommentModal, .editCommentModal{
+    width: 500px;
+    margin: 150px auto;
+}
+
+.editPostModal textarea, .addCommentModal .modal-body textarea, .editCommentModal .modal-body textarea{
+    margin: 0 10px;
+    width: 480px;
+    max-width: 480px;
+    height: 150px;
+    max-height: 250px;
+}
+
+.addCommentModal h5{
+    float: left;
+}
+
+.addCommentModal .modal-body div p{
+    line-height: 35px;
+}
+
+.addCommentModal .modal-body .panel{
+    margin-left:10px;
+    margin-right:10px;
 }

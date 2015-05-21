@@ -1,0 +1,16 @@
+<div class="modal" id="#editComment" ng-if="editCommentShown">
+    <div class="modal-dialog editCommentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancelEditComment()">x</button>
+                <h4 class="modal-title">Edit Comment</h4>
+            </div>
+            <div class="modal-body row">
+                <textarea ng-model="editCommentPostData.commentContent" autofocus = "autofocus"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary pull-right" ng-click="editComment(editCommentPostData.id, editCommentPostData.commentContent)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

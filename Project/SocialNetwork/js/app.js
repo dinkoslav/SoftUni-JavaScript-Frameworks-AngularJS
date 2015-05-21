@@ -46,14 +46,16 @@ if(!localStorage['ngStorage-access_token']){
     }]);
 
 app.config(['$httpProvider', function($httpProvider) {
-        $httpProvider.interceptors.push(function($q, $location, $sessionStorage, $localStorage) {
+        $httpProvider.interceptors.push(function($q, $timeout, $window, $location, $sessionStorage, $localStorage) {
             return {
                 'responseError': function(rejection){
                     var defer = $q.defer();
                     if(rejection.status == 401){
                         $localStorage.$reset();
                         $sessionStorage.$reset();
-                        $location.path('/');
+                        $timeout(function () {
+                            $window.location.reload();
+                        }, 1000);
                     }
                     defer.reject(rejection);
                     return defer.promise;

@@ -9,18 +9,22 @@
             {{postData.postContent}}
         </div>
         <div class="panel-footer">
+            <div>
+                <button data-toggle="modal" data-target="#editPost" type="submit" class="btn btn-warning pull-left" ng-if="postData.author.username == user.username" ng-click="showEditPost(postData.id)">Edit</button>
+                <button type="submit" class="btn btn-danger pull-left" ng-if="postData.author.username == user.username || postData.wallOwner.username == user.username" ng-click="deletePost(postData.id)">Delete</button>
+            </div>
             <div class="post-comment-panel pull-right">
                 {{postData.totalCommentsCount}}
-                <a href="" ng-click="commentPost(postData.id)">
+                <a href="" ng-click="showCommentPost(postData.id)">
                     <span class="glyphicon glyphicon-pencil">Comment</span>
                 </a>
             </div>
             <div class="likes-panel  pull-right">
                 {{postData.likesCount}}
                 <a href="" ng-click="likePost(postData.id)" ng-if="!postData.liked">
-                    <span class="glyphicon glyphicon-thumbs-up" >Like</span>
+                    <span class="glyphicon glyphicon-thumbs-up">Like</span>
                 </a>
-                <a href="" ng-click="likePost(postData.id)" ng-if="postData.liked">
+                <a href="" ng-click="unlikePost(postData.id)" ng-if="postData.liked">
                     <span class="glyphicon glyphicon-thumbs-down">Unlike</span>
                 </a>
             </div>
@@ -36,12 +40,16 @@
                     {{commentData.commentContent}}
                 </div>
                 <div class="panel-footer">
+                    <div>
+                        <button data-toggle="modal" data-target="#editComment" type="submit" class="btn btn-warning pull-left" ng-if="commentData.author.username == user.username" ng-click="showEditComment(postData.id, commentData.id)">Edit</button>
+                        <button type="submit" class="btn btn-danger pull-left" ng-if="commentData.author.username == user.username || postData.author.username == user.username" ng-click="deleteComment(postData.id, commentData.id)">Delete</button>
+                    </div>
                     <div class="likes-panel  pull-right">
                         {{commentData.likesCount}}
-                        <a href="" ng-click="likePost(commentData.id)" ng-if="!commentData.liked">
+                        <a href="" ng-click="likeComment(postData.id, commentData.id)" ng-if="!commentData.liked">
                             <span class="glyphicon glyphicon-thumbs-up" >Like</span>
                         </a>
-                        <a href="" ng-click="likePost(commentData.id)" ng-if="commentData.liked">
+                        <a href="" ng-click="unlikeComment(postData.id, commentData.id)" ng-if="commentData.liked">
                             <span class="glyphicon glyphicon-thumbs-down">Unlike</span>
                         </a>
                     </div>
@@ -49,7 +57,10 @@
             </div>
         </div>
         <div class="col-md-12 more-btn" ng-if="postData.totalCommentsCount > 0">
-            <button type="submit" class="btn btn-primary pull-right bott" ng-click="moreComments()">More ...</button>
+            <button type="submit" class="btn btn-primary pull-right" ng-click="moreComments()">More ...</button>
         </div>
     </div>
+    <div editpost></div>
+    <div addcomment></div>
+    <div editcomment></div>
 </section>

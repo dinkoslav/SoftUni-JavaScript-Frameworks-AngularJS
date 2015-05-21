@@ -1,0 +1,22 @@
+<div class="modal" id="#addComment" ng-if="addCommentShown">
+    <div class="modal-dialog addCommentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancelAddComment()">x</button>
+                <h4 class="modal-title">Add Comment To Post</h4>
+            </div>
+            <div class="modal-body row">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h5><strong>Post: </strong></h5>
+                        <p>{{addCommentPostData.postContent}}</p>
+                    </div>
+                </div>
+                <textarea ng-model="addCommentText" autofocus = "autofocus"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary pull-right" ng-click="addComment(addCommentPostData.id, addCommentText)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
