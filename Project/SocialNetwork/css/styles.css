@@ -223,3 +223,60 @@ ul.navbar-nav>li>a>span{
     margin-top:3px;
     float:right;
 }
+
+.news-feed>.panel-default{
+    display: inline-block;
+    width: 100%;
+}
+
+.news-feed>.panel>.panel-heading{
+    height: 70px;
+}
+
+.news-feed>.panel>.panel-heading img{
+    width:50px;
+    height:50px;
+    margin-right:20px;
+    margin-bottom:10px;
+}
+
+.news-feed>.panel>.panel-heading h4{
+    margin-bottom: 0;
+}
+
+.news-feed>.panel>.panel-footer>.likes-panel{
+    margin-right:10px;
+}
+
+.news-feed  .panel-footer{
+    height: 40px;
+}
+
+.news-feed .comments-panel{
+    margin-top:20px;
+    margin-right:10px;
+}
+
+.news-feed .comments-panel .panel-heading{
+    height:60px;
+}
+
+.news-feed .comments-panel .panel-heading img{
+    width:100px;
+    height:100px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+
+.news-feed .comments-panel .panel-heading h4{
+    float: left;
+    margin-right:20px;
+}
+
+.news-feed .comments-panel .panel-heading p{
+    line-height: 40px;
+}
+
+.news-feed .more-btn{
+    margin-bottom: 10px;
+}

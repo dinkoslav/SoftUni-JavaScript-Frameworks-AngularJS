@@ -1,5 +1,5 @@
 app.controller('FriendsSidebarController',
-    ['$scope', 'friendsData', 'profileImage', '$routeParams', '$localStorage', function($scope, friendsData, profileImage, $routeParams, $localStorage){
+    ['$scope', 'friendsData', 'profileImage', '$routeParams', '$localStorage', '$location', function($scope, friendsData, profileImage, $routeParams, $localStorage, $location){
     $scope.friendsCount = 0;
     $scope.friends = [];
     $scope.sidebarOwner = $localStorage['username'];

@@ -1,10 +1,11 @@
-app.controller('LogoutController', ['$scope', 'userData', 'authentication', '$timeout', '$window', function($scope, userData, authentication, $timeout, $window){
+app.controller('LogoutController', ['$scope', 'userData', 'authentication', '$timeout', '$window', '$localStorage', '$sessionStorage', function($scope, userData, authentication, $timeout, $window, $localStorage, $sessionStorage){
     userData.logout()
         .$promise
         .then(function(){
-            $timeout(function () {
-                authentication.removeUser();
-                $window.location.reload();
-            }, 1000);
-        })
+            $localStorage.$reset();
+            $sessionStorage.$reset();
+        });
+    $timeout(function () {
+        $window.location.reload();
+    }, 1000);
 }]);

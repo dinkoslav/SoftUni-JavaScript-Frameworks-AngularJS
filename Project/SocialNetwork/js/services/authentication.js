@@ -5,6 +5,12 @@ app.factory('authentication', ['$localStorage', '$sessionStorage', function($loc
         });
     }
 
+    function saveUserDataInSession(data){
+        $sessionStorage.$default({
+            'access_token': data.access_token
+        });
+    }
+
     function getHeaders(){
         var headers = {};
         var userToken = $localStorage['access_token'];
@@ -22,6 +28,7 @@ app.factory('authentication', ['$localStorage', '$sessionStorage', function($loc
     return{
         saveUser: saveUserData,
         getHeaders: getHeaders,
-        removeUser: removeUser
+        removeUser: removeUser,
+        rememberUser: saveUserDataInSession
     }
 }]);

@@ -17,7 +17,23 @@ app.factory('postsData', ['$resource', 'baseServiceUrl', 'authentication', funct
             .save(data);
     }
 
+    function getNewsFeed(start) {
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'me/feed?StartPostId=' + start + '&PageSize=5',
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    headers: headers
+                }
+            })
+            .get();
+    }
+
     return{
-        addNewPost: addNewPost
+        addNewPost: addNewPost,
+        getNewsFeed: getNewsFeed
     }
 }]);

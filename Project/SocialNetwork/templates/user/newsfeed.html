@@ -1,0 +1,55 @@
+<section class="news-feed">
+    <div class="panel panel-default" ng-repeat="postData in newsfeedData">
+        <div class="panel-heading">
+            <img class="pull-left" src="" ng-src="{{postData.author.profileImageData}}" alt="{{postData.author.name}}">
+            <h4>{{postData.author.name}}</h4>
+            <p>{{postData.date | date:'dd-MM-yyyy HH:MM:ss'}}</p>
+        </div>
+        <div class="panel-body">
+            {{postData.postContent}}
+        </div>
+        <div class="panel-footer">
+            <div class="post-comment-panel pull-right">
+                {{postData.totalCommentsCount}}
+                <a href="" ng-click="commentPost(postData.id)">
+                    <span class="glyphicon glyphicon-pencil">Comment</span>
+                </a>
+            </div>
+            <div class="likes-panel  pull-right">
+                {{postData.likesCount}}
+                <a href="" ng-click="likePost(postData.id)" ng-if="!postData.liked">
+                    <span class="glyphicon glyphicon-thumbs-up" >Like</span>
+                </a>
+                <a href="" ng-click="likePost(postData.id)" ng-if="postData.liked">
+                    <span class="glyphicon glyphicon-thumbs-down">Unlike</span>
+                </a>
+            </div>
+        </div>
+        <div class="row comments-panel pull-right col-md-10" ng-if="postData.totalCommentsCount > 0">
+            <div class="panel panel-default" ng-repeat="commentData in postData.comments">
+                <div class="panel-heading">
+                    <img class="pull-left" src="" ng-src="{{commentData.author.profileImageData}}" alt="{{postData.author.name}}">
+                    <h4>{{commentData.author.name}}</h4>
+                    <p>{{commentData.date | date:'dd-MM-yyyy HH:MM:ss'}}</p>
+                </div>
+                <div class="panel-body">
+                    {{commentData.commentContent}}
+                </div>
+                <div class="panel-footer">
+                    <div class="likes-panel  pull-right">
+                        {{commentData.likesCount}}
+                        <a href="" ng-click="likePost(commentData.id)" ng-if="!commentData.liked">
+                            <span class="glyphicon glyphicon-thumbs-up" >Like</span>
+                        </a>
+                        <a href="" ng-click="likePost(commentData.id)" ng-if="commentData.liked">
+                            <span class="glyphicon glyphicon-thumbs-down">Unlike</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 more-btn" ng-if="postData.totalCommentsCount > 0">
+            <button type="submit" class="btn btn-primary pull-right bott" ng-click="moreComments()">More ...</button>
+        </div>
+    </div>
+</section>

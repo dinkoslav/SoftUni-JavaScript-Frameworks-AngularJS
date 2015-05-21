@@ -44,4 +44,21 @@ if(!localStorage['ngStorage-access_token']){
             redirectTo: '/'
         });
     }]);
+
+app.config(['$httpProvider', function($httpProvider) {
+        $httpProvider.interceptors.push(function($q, $location, $sessionStorage, $localStorage) {
+            return {
+                'responseError': function(rejection){
+                    var defer = $q.defer();
+                    if(rejection.status == 401){
+                        $localStorage.$reset();
+                        $sessionStorage.$reset();
+                        $location.path('/');
+                    }
+                    defer.reject(rejection);
+                    return defer.promise;
+                }
+            };
+        });
+    }])
 }
