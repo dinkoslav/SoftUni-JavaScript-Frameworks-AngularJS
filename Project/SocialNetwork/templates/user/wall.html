@@ -1,13 +1,37 @@
 <userheader></userheader>
 <section>
-    <header class="section-header">
-        <h2>News Feed</h2>
+    <header class="wall-header">
+        <div class="wall-user-info">
+            <img class="profile-img img-thumbnail" src="" ng-src="{{wallData.profileImageData}}" alt="{{wallData.name}}">
+            <div>
+                <h3>{{wallData.name}}</h3>
+                <button type="button" class="btn btn-primary btn-lg" ng-if="!isButton" ng-hide="isMe">{{userStatus}}</button>
+                <button type="button" class="btn btn-primary btn-lg" ng-click="sendFriendRequest(wallData.username)" ng-if="isButton" ng-hide="isMe">{{userStatus}}</button>
+            </div>
+        </div>
+        <img class="cover-img" src="" ng-src="{{wallData.coverImageData}}" alt="{{wallData.name}}">
     </header>
     <div class="container">
         <div class="col-sm-offset-1 col-md-6">
             <newsfeed>News</newsfeed>
         </div>
-        <div class="col-sm-offset-1 col-md-4">
+        <div class="col-sm-offset-1 col-md-4" ng-if="friendsSidebarVisible">
+            <div class="send-message">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <textarea class="form-control" rows="3" id="textArea" ng-model="postText"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <img src="" ng-src="{{user.profileImageData}}" alt="{{user.name}}">
+                                <p> as <strong>{{user.name}}</strong></p>
+                                <button type="button" class="btn btn-primary" ng-click="addPostComment(postText)">Submit</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
             <friendssidebar></friendssidebar>
         </div>
     </div>

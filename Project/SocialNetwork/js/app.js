@@ -21,7 +21,7 @@ if(!localStorage['ngStorage-access_token']){
             templateUrl: 'templates/user/home.html'
         });
         $routeProvider.when('/users/:username', {
-            templateUrl: 'templates/user/home.html',
+            templateUrl: 'templates/user/wall.html',
             controller: 'WallController'
         });
         $routeProvider.when('/users/:username/friends', {
@@ -39,6 +39,9 @@ if(!localStorage['ngStorage-access_token']){
         $routeProvider.when('/logout', {
             templateUrl: 'templates/user/logout.html',
             controller: 'LogoutController'
+        });
+        $routeProvider.otherwise({
+            redirectTo: '/'
         });
     }]);
 }
