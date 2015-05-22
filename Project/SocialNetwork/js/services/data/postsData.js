@@ -197,6 +197,21 @@ app.factory('postsData', ['$resource', 'baseServiceUrl', 'authentication', funct
             .update(data);
     }
 
+    function getPostComments(postId) {
+        var headers = authentication.getHeaders();
+        return $resource(
+            baseServiceUrl + 'Posts/' + postId + '/comments',
+            null,
+            {
+                'get': {
+                    method: 'GET',
+                    isArray: true,
+                    headers: headers
+                }
+            })
+            .get();
+    }
+
     return{
         addNewPost: addNewPost,
         getNewsFeed: getNewsFeed,
@@ -210,6 +225,7 @@ app.factory('postsData', ['$resource', 'baseServiceUrl', 'authentication', funct
         likeComment: likeComment,
         unlikeComment: unlikeComment,
         deleteComment: deleteComment,
-        editComment: editComment
+        editComment: editComment,
+        getPostComments: getPostComments
     }
 }]);

@@ -56,8 +56,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-12 more-btn" ng-if="postData.totalCommentsCount > 0">
-            <button type="submit" class="btn btn-primary pull-right" ng-click="moreComments()">More ...</button>
+        <div class="col-md-12 more-btn" ng-if="postData.totalCommentsCount > 3 && postData.totalCommentsCount != postData.comments.length">
+            <button type="submit" class="btn btn-primary pull-right" ng-click="moreComments(postData.id)">More ...</button>
+        </div>
+        <div class="col-md-12 more-btn" ng-if="postData.totalCommentsCount > 3 && postData.totalCommentsCount == postData.comments.length">
+            <button type="submit" class="btn btn-primary pull-right" ng-click="lessComments(postData.id)">Less ...</button>
         </div>
     </div>
     <div editpost></div>

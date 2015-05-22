@@ -8,10 +8,10 @@
             <div class="row friend-filter">
                 <p class="col-md-7">Name Filter: </p>
                 <div class="col-md-5 form-group pull-right">
-                    <input class="form-control" placeholder="Search" type="text">
+                    <input class="form-control" ng-model="filter.name" placeholder="Filter" type="text">
                 </div>
             </div>
-            <div class="col-md-5 col-md-offset-1 well well-sm" ng-repeat="friend in friends">
+            <div class="col-md-5 col-md-offset-1 well well-sm" ng-repeat="friend in friends | filter : filter">
                 <a href="#/users/{{friend.username}}">
                     <div class="row">
                         <img class="col-md-3" src="" ng-src="{{friend.profileImageData}}" alt="{{friend.name}}">

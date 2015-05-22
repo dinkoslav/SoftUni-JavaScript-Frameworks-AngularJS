@@ -23,7 +23,6 @@ app.controller('NewsFeedController',
                         .then(function(data) {
                             post.liked = true;
                             post.likesCount = post.likesCount + 1;
-                            alertify.success('You Liked A Post.');
                         }, function (error) {
                             alertify.error('Liking Failed! Try Again!');
                         })
@@ -48,7 +47,6 @@ app.controller('NewsFeedController',
                                     post.likesCount = post.likesCount - 1;
                                 }
                             });
-                            alertify.success('You Unliked A Post!');
                         }, function (error) {
                             alertify.error('Unliking Failed! Try Again!');
                         })
@@ -110,8 +108,26 @@ app.controller('NewsFeedController',
         })
     };
 
-    $scope.moreComments = function(){
-            // TODO
+    $scope.moreComments = function(postId){
+        $scope.newsfeedData.forEach(function(post){
+            if(post.id == postId){
+                postsData.getPostComments(postId)
+                    .$promise
+                    .then(function(data) {
+                        post.comments = data;
+                    }, function (error) {
+                        alertify.error('Getting Comments Failed! Try Again!');
+                    })
+            }
+        })
+    };
+
+    $scope.lessComments = function(postId){
+        $scope.newsfeedData.forEach(function(post){
+            if(post.id == postId){
+                post.comments = post.comments.slice(0, 3);
+            }
+        })
     };
 
     $scope.likeComment = function(postId, commentId){
@@ -125,7 +141,6 @@ app.controller('NewsFeedController',
                                 .then(function(data) {
                                     comment.liked = true;
                                     comment.likesCount += 1;
-                                    alertify.success('You Liked A Comment.');
                                 }, function (error) {
                                     alertify.error('Liking Failed! Try Again!');
                                 })
@@ -150,7 +165,7 @@ app.controller('NewsFeedController',
                                 .then(function(data) {
                                     comment.liked = false;
                                     comment.likesCount -= 1;
-                                    alertify.success('You Unliked A Comment.');
+
                                 }, function (error) {
                                     alertify.error('Unliking Failed! Try Again!');
                                 })
@@ -255,6 +270,7 @@ app.controller('NewsFeedController',
                     });
 
                     $scope.newsfeedData.push(post);
+                    console.log($scope.newsfeedData);
                 });
             }, function (error) {
                 alertify.error('Server Error! Try Again!');
