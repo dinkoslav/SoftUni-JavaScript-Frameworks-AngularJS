@@ -35,7 +35,7 @@ app.factory('postsData', ['$resource', 'baseServiceUrl', 'authentication', funct
     function getUserWall(start, username) {
         var headers = authentication.getHeaders();
         return $resource(
-            baseServiceUrl + 'users/' + username + '/wall?StartPostId' + start + '=&PageSize=5',
+            baseServiceUrl + 'users/' + username + '/wall?StartPostId' + start + '=&PageSize=10',
             null,
             {
                 'get': {

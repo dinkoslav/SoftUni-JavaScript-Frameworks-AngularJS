@@ -1,5 +1,5 @@
 <section class="news-feed">
-    <div class="panel panel-default" ng-repeat="postData in newsfeedData">
+    <div class="panel panel-default" ng-repeat="postData in newsfeedData  | limitTo: 5">
         <div class="panel-heading">
             <img class="pull-left" src="" ng-src="{{postData.author.profileImageData}}" alt="{{postData.author.name}}">
             <h4><a href="" ng-mouseover="hoverPostName = true">{{postData.author.name}}</a></h4>

@@ -267,7 +267,7 @@ ul.navbar-nav>li>a>span{
 }
 
 .userHoverPanel{
-    width:330px;
+    width:400px;
     height:105px;
     position:absolute;
 }
@@ -294,7 +294,7 @@ ul.navbar-nav>li>a>span{
 }
 
 .userHoverPanelInfo{
-    width:190px;
+    width:250px;
 }
 
 .news-feed .comments-panel{

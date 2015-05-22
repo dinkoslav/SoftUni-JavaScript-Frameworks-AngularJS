@@ -90,14 +90,16 @@ app.controller('NewsFeedController',
     };
 
     $scope.deletePost = function(postId){
+        var postCounter = 0;
+        var postPosition = 0;
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
                 if(post.author.username == $localStorage['username'] || post.wallOwner.username == $localStorage['username']){
+                    postPosition = postCounter;
                     postsData.deletePost(postId)
                         .$promise
                         .then(function(data) {
                             alertify.success('Post Successfully Deleted.');
-                            $route.reload();
                         }, function (error) {
                             alertify.error('Post Delete Failed! Try Again!');
                         })
@@ -106,7 +108,10 @@ app.controller('NewsFeedController',
                     alertify.error('You can delete your or your wall posts!');
                 }
             }
-        })
+            postCounter++;
+        });
+
+        $scope.newsfeedData.splice(postPosition, 1);
     };
 
     $scope.moreComments = function(postId){
@@ -189,8 +194,19 @@ app.controller('NewsFeedController',
                         postsData.deleteComment(postId, commentId)
                             .$promise
                             .then(function(data) {
+                                postsData.getPostComments(postId)
+                                    .$promise
+                                    .then(function(data) {
+                                        if(post.totalCommentsCount == post.comments.length){
+                                            post.comments = data;
+                                        }
+                                        else{
+                                            post.comments = data.slice(0,3);
+                                        }
+
+                                        post.totalCommentsCount -= 1;
+                                    });
                                 alertify.success('You Deleted A Comment.');
-                                $route.reload();
                             }, function (error) {
                                 alertify.error('Delete Failed! Try Again!');
                             })
@@ -323,7 +339,6 @@ app.controller('NewsFeedController',
                     });
 
                     $scope.newsfeedData.push(post);
-                    console.log($scope.newsfeedData);
                 });
             }, function (error) {
                 alertify.error('Server Error! Try Again!');
