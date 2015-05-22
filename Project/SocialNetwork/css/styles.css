@@ -270,8 +270,6 @@ ul.navbar-nav>li>a>span{
     width:330px;
     height:105px;
     position:absolute;
-    left:100px;
-    top: 20px;
 }
 
 .news-feed .panel .panel-heading .userHoverPanel img{
@@ -285,6 +283,10 @@ ul.navbar-nav>li>a>span{
     float:left;
     margin-top:5px;
     margin-right:5px;
+}
+
+.news-feed .panel .panel-heading .userHoverPanel h5 a{
+    color: black;
 }
 
 .news-feed .panel .panel-heading .userHoverPanel span{

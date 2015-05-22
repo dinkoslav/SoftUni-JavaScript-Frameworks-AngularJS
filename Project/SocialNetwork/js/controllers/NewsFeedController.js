@@ -13,6 +13,7 @@ app.controller('NewsFeedController',
     $scope.editCommentPostId = 0;
     $scope.editCommentPostData = [];
     $scope.editCommentOldText = '';
+    $scope.commentUserStatus = '';
 
     $scope.likePost = function(postId){
         $scope.newsfeedData.forEach(function(post){
@@ -236,6 +237,43 @@ app.controller('NewsFeedController',
                     })
             }
         });
+    };
+
+    $scope.sendFriendRequestFromComment = function(postId, commentId){
+        $scope.newsfeedData.forEach(function(post){
+            if(post.id == postId){
+                post.comments.forEach(function(comment){
+                    if(comment.id == commentId){
+                        friendsData.sendFriendRequest(comment.author.username)
+                            .$promise
+                            .then(function (data) {
+                                comment.author.hasPendingRequest = true;
+                                alertify.success('Friend Invite Send Successfully!');
+                            }, function(error){
+                                alertify.error('Friend Invite Failed! Try again!');
+                            })
+                    }
+                });
+            }
+        });
+    };
+
+    $scope.commentHover = function(username){
+        friendsData.getUserFullData(username)
+            .$promise
+            .then(function (data) {
+                if(data.hasPendingRequest && data.username != $localStorage['username']){
+                    $scope.commentUserStatus = 'Pending';
+                }
+                else if(data.isFriend){
+                    $scope.commentUserStatus = 'Friend';
+                }
+                else if(!data.isFriend && !data.hasPendingRequest){
+                    $scope.commentUserStatus = 'Invite';
+                }
+            });
+
+        return true;
     };
 
     if(!$routeParams.username){

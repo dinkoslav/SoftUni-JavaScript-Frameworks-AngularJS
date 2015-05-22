@@ -9,7 +9,7 @@
                         <img src="" ng-src="{{postData.author.profileImageData}}" alt="{{postData.author.name}}">
                     </div>
                     <div class="pull-left userHoverPanelInfo">
-                        <h5>{{postData.author.name}}</h5>
+                        <h5><a href="#/users/{{postData.author.username}}">{{postData.author.name}}</a></h5>
                         <div ng-if="postData.author.gender == 0">
                             <span class="glyphicon glyphicon-question-sign"></span>
                         </div>
@@ -55,14 +55,14 @@
             <div class="panel panel-default" ng-repeat="commentData in postData.comments">
                 <div class="panel-heading">
                     <img class="pull-left" src="" ng-src="{{commentData.author.profileImageData}}" alt="{{postData.author.name}}">
-                    <h4><a href="" ng-mouseover="hoverCommentName = true">{{commentData.author.name}}</a></h4>
+                    <h4><a href="" ng-mouseover="hoverCommentName = commentHover(commentData.author.username)">{{commentData.author.name}}</a></h4>
                     <div class="panel panel-default userHoverPanel" ng-show="hoverCommentName" ng-mouseleave="hoverCommentName = false">
                         <div class="panel-body">
                             <div class="pull-left">
                                 <img src="" ng-src="{{commentData.author.profileImageData}}" alt="{{postData.author.name}}">
                             </div>
                             <div class="pull-left userHoverPanelInfo">
-                                <h5>{{commentData.author.name}}</h5>
+                                <h5><a href="#/users/{{commentData.author.username}}">{{commentData.author.name}}</a></h5>
                                 <div ng-if="commentData.author.gender == 0">
                                     <span class="glyphicon glyphicon-question-sign"></span>
                                 </div>
@@ -73,9 +73,9 @@
                                     <span class="glyphicon glyphicon-chevron-down"></span>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-left" ng-if="commentData.author.hasPendingRequest && commentData.author.username != user.username">Pending</button>
-                            <button type="submit" class="btn btn-primary pull-left" ng-if="commentData.author.isFriend">Friend</button>
-                            <button type="submit" class="btn btn-primary pull-left" ng-if="!commentData.author.hasPendingRequest && !commentData.author.isFriend" ng-click="sendFriendRequestFromComment(postData.id, commentData.id)">Invite</button>
+                            <button type="submit" class="btn btn-primary pull-left" ng-if="commentUserStatus == 'Pending'">Pending</button>
+                            <button type="submit" class="btn btn-primary pull-left" ng-if="commentUserStatus == 'Friend'">Friend</button>
+                            <button type="submit" class="btn btn-primary pull-left" ng-if="commentUserStatus == 'Invite'" ng-click="sendFriendRequestFromComment(postData.id, commentData.id)">Invite</button>
                         </div>
                     </div>
                     <p>{{commentData.date | date:'dd-MM-yyyy HH:MM:ss'}}</p>
