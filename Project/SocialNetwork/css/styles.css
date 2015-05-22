@@ -231,6 +231,7 @@ ul.navbar-nav>li>a>span{
 
 .news-feed>.panel>.panel-heading{
     height: 70px;
+    position: relative;
 }
 
 .news-feed>.panel>.panel-heading img{
@@ -242,6 +243,11 @@ ul.navbar-nav>li>a>span{
 
 .news-feed>.panel>.panel-heading h4{
     margin-bottom: 0;
+}
+
+.news-feed .panel .panel-heading h4 a{
+    text-decoration: none;
+    color:black;
 }
 
 .news-feed>.panel>.panel-footer>.likes-panel{
@@ -258,6 +264,35 @@ ul.navbar-nav>li>a>span{
 
 .news-feed  .panel-footer button{
     margin-right:10px;
+}
+
+.userHoverPanel{
+    width:330px;
+    height:105px;
+    position:absolute;
+    left:100px;
+    top: 20px;
+}
+
+.news-feed .panel .panel-heading .userHoverPanel img{
+    width: 75px;
+    height: 75px;
+    float:left;
+}
+
+.news-feed .panel .panel-heading .userHoverPanel h5{
+    font-size: 18px;
+    float:left;
+    margin-top:5px;
+    margin-right:5px;
+}
+
+.news-feed .panel .panel-heading .userHoverPanel span{
+    line-height: 24px;
+}
+
+.userHoverPanelInfo{
+    width:190px;
 }
 
 .news-feed .comments-panel{

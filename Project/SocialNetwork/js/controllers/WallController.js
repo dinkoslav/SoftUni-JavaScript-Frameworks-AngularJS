@@ -1,5 +1,5 @@
 app.controller('WallController',
-    ['$scope', '$routeParams', '$localStorage', 'profileImage', 'friendsData', 'postsData','coverImage', '$route', function($scope, $routeParams, $localStorage, profileImage, friendsData, postsData, coverImage, $route){
+    ['$scope', '$routeParams', '$localStorage', 'profileImage', 'friendsData', 'postsData','coverImage', '$route', '$location', function($scope, $routeParams, $localStorage, profileImage, friendsData, postsData, coverImage, $route, $location){
     $scope.friendsSidebarVisible = true;
     $scope.wallOwner = '';
     $scope.wallData = {};
@@ -28,8 +28,8 @@ app.controller('WallController',
             .$promise
             .then(function (data) {
                 $scope.wallData.hasPendingRequest = true;
+                $scope.userStatus = 'Pending';
                 alertify.success('Friend Invite Send Successfully!');
-                $route.reload();
             }, function(error){
                 alertify.error('Friend Invite Failed! Try again!');
             })

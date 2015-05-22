@@ -17,7 +17,7 @@ app.controller('NewsFeedController',
     $scope.likePost = function(postId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if(post.author.isFriend || post.wallOwner.isFriend){
+                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']){
                     postsData.likePost(postId)
                         .$promise
                         .then(function(data) {
@@ -37,7 +37,7 @@ app.controller('NewsFeedController',
     $scope.unlikePost = function(postId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if(post.author.isFriend || post.wallOwner.isFriend) {
+                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']) {
                     postsData.unlikePost(postId)
                         .$promise
                         .then(function(data) {
@@ -133,7 +133,7 @@ app.controller('NewsFeedController',
     $scope.likeComment = function(postId, commentId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if(post.author.isFriend || post.wallOwner.isFriend){
+                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']){
                     post.comments.forEach(function(comment){
                         if(comment.id == commentId){
                             postsData.likeComment(postId, commentId)
@@ -157,7 +157,7 @@ app.controller('NewsFeedController',
     $scope.unlikeComment = function(postId, commentId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if(post.author.isFriend || post.wallOwner.isFriend){
+                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']){
                     post.comments.forEach(function(comment){
                         if(comment.id == commentId){
                             postsData.unlikeComment(postId, commentId)
@@ -219,6 +219,21 @@ app.controller('NewsFeedController',
                         }
                     }
                 });
+            }
+        });
+    };
+
+    $scope.sendFriendRequestFromPost = function(postId){
+        $scope.newsfeedData.forEach(function(post){
+            if(post.id == postId){
+                friendsData.sendFriendRequest(post.author.username)
+                    .$promise
+                    .then(function (data) {
+                        post.author.hasPendingRequest = true;
+                        alertify.success('Friend Invite Send Successfully!');
+                    }, function(error){
+                        alertify.error('Friend Invite Failed! Try again!');
+                    })
             }
         });
     };

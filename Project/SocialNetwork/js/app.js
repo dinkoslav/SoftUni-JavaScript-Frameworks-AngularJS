@@ -57,6 +57,9 @@ app.config(['$httpProvider', function($httpProvider) {
                             $window.location.reload();
                         }, 1000);
                     }
+                    else if(rejection.status == 404){
+                        $location.path('/');
+                    }
                     defer.reject(rejection);
                     return defer.promise;
                 }
