@@ -17,8 +17,6 @@ app.controller('WallController',
                 .then(function (data) {
                     alertify.success('Post Send Successfully!');
                     $scope.newsfeedData.unshift(data);
-                    $scope.newsfeedData.pop();
-                    $scope.postText = '';
                 }, function (error) {
                     alertify.error('Post Send Failed! Try Again!');
                 });

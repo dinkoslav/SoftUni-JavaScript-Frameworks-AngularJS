@@ -18,7 +18,10 @@ app.controller('NewsFeedController',
     $scope.likePost = function(postId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']){
+                if(post.author.isFriend ||
+                    post.wallOwner.isFriend ||
+                    post.author.username == $localStorage['username'] ||
+                    post.wallOwner.username ==$localStorage['username']){
                     postsData.likePost(postId)
                         .$promise
                         .then(function(data) {
@@ -38,7 +41,10 @@ app.controller('NewsFeedController',
     $scope.unlikePost = function(postId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']) {
+                if(post.author.isFriend ||
+                    post.wallOwner.isFriend ||
+                    post.author.username == $localStorage['username'] ||
+                    post.wallOwner.username ==$localStorage['username']) {
                     postsData.unlikePost(postId)
                         .$promise
                         .then(function(data) {
@@ -94,7 +100,8 @@ app.controller('NewsFeedController',
         var postPosition = 0;
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if(post.author.username == $localStorage['username'] || post.wallOwner.username == $localStorage['username']){
+                if(post.author.username == $localStorage['username'] ||
+                    post.wallOwner.username == $localStorage['username']){
                     postPosition = postCounter;
                     postsData.deletePost(postId)
                         .$promise
@@ -139,7 +146,10 @@ app.controller('NewsFeedController',
     $scope.likeComment = function(postId, commentId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']){
+                if(post.author.isFriend ||
+                    post.wallOwner.isFriend ||
+                    post.author.username == $localStorage['username'] ||
+                    post.wallOwner.username ==$localStorage['username']){
                     post.comments.forEach(function(comment){
                         if(comment.id == commentId){
                             postsData.likeComment(postId, commentId)
@@ -163,7 +173,10 @@ app.controller('NewsFeedController',
     $scope.unlikeComment = function(postId, commentId){
         $scope.newsfeedData.forEach(function(post){
             if(post.id == postId){
-                if((post.author.isFriend || post.wallOwner.isFriend) && post.author.username != $localStorage['username']){
+                if(post.author.isFriend ||
+                    post.wallOwner.isFriend ||
+                    post.author.username == $localStorage['username'] ||
+                    post.wallOwner.username ==$localStorage['username']){
                     post.comments.forEach(function(comment){
                         if(comment.id == commentId){
                             postsData.unlikeComment(postId, commentId)
