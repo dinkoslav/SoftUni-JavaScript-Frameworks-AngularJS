@@ -351,3 +351,33 @@ ul.navbar-nav>li>a>span{
     margin-left:10px;
     margin-right:10px;
 }
+
+.news-feed .panel-heading h4 a div{
+    overflow: hidden;
+    height: 19px;
+    word-wrap: break-word;
+}
+
+.userHoverPanelInfo h5 a div, .comments-panel h5 a div{
+    overflow: hidden;
+    height: 19px;
+    width:200px;
+    word-wrap: break-word;
+}
+
+.comments-panel h4 a div{
+    overflow: hidden;
+    height: 19px;
+    width: 185px;
+    word-wrap: break-word;
+}
+
+.post-content, .comment-content {
+    word-wrap: break-word;
+}
+
+.wall-user-info>div>h3{
+    height: 32px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
